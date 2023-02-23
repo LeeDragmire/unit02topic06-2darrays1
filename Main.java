@@ -1,5 +1,4 @@
 public class Main {
-
   private static void print2DArray(int[][] a) {
     for (int[] row : a) {
         for (int value : row) {
@@ -20,6 +19,7 @@ public class Main {
   }
 }
 
+  // good
   public static int[][] copySquare(int[][] a) {
     int[][] copy = new int[a.length][a[0].length];
 
@@ -69,6 +69,7 @@ public class Main {
     print2DArray(copy);
   }
   
+  // good
   public static double[][] withWeightedAverage(double[][] a, double[] weights) {
     int rows = a.length;
     int col = a[0].length;
@@ -127,6 +128,12 @@ public class Main {
     print2DArray(copySquare(a1));
     print2DArray(copyRectangle(a1));
     print2DArray(copyRagged(a1));
+
+    
+    int[][] copyOfa2 = copyRectangle(a2);
+    System.out.println("If copyOfa2 is a copy, it should reside at a different memory address...");
+    System.out.println("Address of a2: " + a2);
+    System.out.println("Address of copyOfa2: " + copyOfa2);
 
     System.out.println("--------------------------------------------------------------------------------");
 
