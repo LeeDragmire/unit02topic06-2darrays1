@@ -1,6 +1,6 @@
 public class Main {
 
-  public static void print2DArray(int[][] a) {
+  private static void print2DArray(int[][] a) {
     for (int[] row : a) {
         for (int value : row) {
             System.out.print(value);
@@ -10,7 +10,7 @@ public class Main {
     }
 }
 
-  public static void print2DArray(double[][] a) {
+  private static void print2DArray(double[][] a) {
   for (double[] row : a) {
       for (double value : row) {
           System.out.print(value);
@@ -33,7 +33,7 @@ public class Main {
   }
 
   public static int[][] copyRectangle(int[][] a) {
-    int[][] copy = a;
+    int[][] copy = new int[a.length][a[0].length];
 
     for (int i = 0; i < a.length; i++) {
       for (int j = 0; j < a[i].length; j++) {
@@ -45,8 +45,11 @@ public class Main {
   }
 
   public static int[][] copyRagged(int[][] a) {
-    int[][] copy = a;
+    int[][] copy = new int[a.length][];
 
+    for (int i = 0; i < a.length; i++) {
+      copy[i] = new int[a[i].length];
+    }
     for (int i = 0; i < a.length; i++) {
       for (int j = 0; j < a[i].length; j++) {
         copy[i][j] = a[i][j];
@@ -56,14 +59,14 @@ public class Main {
     return copy;
   }
 
-  public static double[][] printTranspose(double[][] a) {
+  public static void printTranspose(double[][] a) {
     double[][] copy = new double[a[0].length][a.length];
     for (int i = 0; i < a.length; i++) {
       for (int j = 0; j < a[i].length; j++) {
         copy[j][i] = a[i][j];
       }
     }
-    return copy;
+    print2DArray(copy);
   }
   
   public static double[][] withWeightedAverage(double[][] a, double[] weights) {
@@ -149,7 +152,7 @@ public class Main {
       {89, 89.5, 81}
     };
 
-    print2DArray(printTranspose(a4));
+    printTranspose(a4);
 
     System.out.println("--------------------------------------------------------------------------------");
 
