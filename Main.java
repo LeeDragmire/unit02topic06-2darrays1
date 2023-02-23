@@ -1,6 +1,6 @@
 public class Main {
-
-  public static void print2DArray(int[][] a) {
+  // NOTE: good idea to make your own methods, but make them private
+  private static void print2DArray(int[][] a) {
     for (int[] row : a) {
         for (int value : row) {
             System.out.print(value);
@@ -10,7 +10,7 @@ public class Main {
     }
 }
 
-  public static void print2DArray(double[][] a) {
+  private static void print2DArray(double[][] a) {
   for (double[] row : a) {
       for (double value : row) {
           System.out.print(value);
@@ -20,6 +20,7 @@ public class Main {
   }
 }
 
+  // good
   public static int[][] copySquare(int[][] a) {
     int[][] copy = new int[a.length][a[0].length];
 
@@ -56,6 +57,7 @@ public class Main {
     return copy;
   }
 
+  // TODO: shouldn't return anything, just print the transpose
   public static double[][] printTranspose(double[][] a) {
     double[][] copy = new double[a[0].length][a.length];
     for (int i = 0; i < a.length; i++) {
@@ -66,6 +68,7 @@ public class Main {
     return copy;
   }
   
+  // good
   public static double[][] withWeightedAverage(double[][] a, double[] weights) {
     int rows = a.length;
     int col = a[0].length;
@@ -124,6 +127,12 @@ public class Main {
     print2DArray(copySquare(a1));
     print2DArray(copyRectangle(a1));
     print2DArray(copyRagged(a1));
+
+    // TODO: your copySquare and copyRectangle don't actually make copies at all, as shown in the following lines:
+    int[][] copyOfa2 = copyRectangle(a2);
+    System.out.println("If copyOfa2 is a copy, it should reside at a different memory address...");
+    System.out.println("Address of a2: " + a2);
+    System.out.println("Address of copyOfa2: " + copyOfa2);
 
     System.out.println("--------------------------------------------------------------------------------");
 
